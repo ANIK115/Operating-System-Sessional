@@ -38,7 +38,7 @@ do
         rm $id.txt 
         marks=$(($max_score - $mis_match * 5))
         if((marks < 0)); then
-            student_marks[$i]="0"
+            student_marks[$i]=0
         else
             student_marks[$i]="$marks"
         fi
@@ -66,8 +66,7 @@ do
                 if ((id != cid)); then
                     match=$(diff -BZ $id.sh $cid.sh | grep -e '<' -e '>' | wc -l)
                     if((match == 0)); then
-                        score=$((max_score * x))
-                        echo "$score"
+                        score=$((0-student_marks[$i]))
                         student_marks[$i]="$score"
                         break
                     fi
