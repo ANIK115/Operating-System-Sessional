@@ -58,20 +58,10 @@ index 0699e7e..d77f147 100644
 +  return num * 4096;
 +}
 diff --git a/kernel/proc.c b/kernel/proc.c
-index 959b778..299d614 100644
+index 959b778..d90f9c8 100644
 --- a/kernel/proc.c
 +++ b/kernel/proc.c
-@@ -312,6 +312,9 @@ fork(void)
- 
-   pid = np->pid;
- 
-+  //copying system call number
-+  np->sys_num = p->sys_num;
-+
-   release(&np->lock);
- 
-   acquire(&wait_lock);
-@@ -681,3 +684,22 @@ procdump(void)
+@@ -681,3 +681,22 @@ procdump(void)
      printf("\n");
    }
  }
