@@ -58,10 +58,19 @@ index 0699e7e..d77f147 100644
 +  return num * 4096;
 +}
 diff --git a/kernel/proc.c b/kernel/proc.c
-index 959b778..d90f9c8 100644
+index 959b778..395c9ca 100644
 --- a/kernel/proc.c
 +++ b/kernel/proc.c
-@@ -681,3 +681,22 @@ procdump(void)
+@@ -169,6 +169,8 @@ freeproc(struct proc *p)
+   p->killed = 0;
+   p->xstate = 0;
+   p->state = UNUSED;
++  p->sys_num = 0;   //clearing the system call number of trace
++
+ }
+ 
+ // Create a user page table for a given process, with no user memory,
+@@ -681,3 +683,22 @@ procdump(void)
      printf("\n");
    }
  }
@@ -302,7 +311,7 @@ index 0000000..1e322ce
 +    fprintf(2, "%s: trace failed\n", argv[0]);
 +    exit(1);
 +  }
-+
++ 
 +  for(i = 2; i < argc && i < MAXARG; i++){
 +    nargv[i-2] = argv[i];
 +  }
