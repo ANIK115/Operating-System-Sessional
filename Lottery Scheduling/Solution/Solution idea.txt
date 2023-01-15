@@ -1,0 +1,37 @@
+Process creation er somoy by default ticket 1 hbe. Ei part fork a handle korlei
+hoye jaoa uchit (not sure)
+
+jokhn kono process settickets(int num) syscall korbe, tokhn myproc() theke oi proc
+ta niye setar ticket num set kore dibo (lock krar bepar ase kina dekhte hbe)
+
+jokhn ekta process run kore timer interrupt er maddhome deschedule hoye RUNNING
+state theke RUNNABLE state a jabe, tokhn sey tar ekta ticket use kore felse
+Tokhn ticket count 1 komate hbe. jodi ticket 0 hye jay tokhn initial ticket value
+current ticket a set kore dite hbe. r koyta timeslice use krtese etar hisab rakhte hbe
+
+
+r scheduler jokhn arekta process ke schedule krbe, tokhn random() use kre 
+ekta process select krte hbe. ei random() er vittite kon process select hbe
+eta ashbe shob tickets count kore er probability ber korar maddhome
+
+jokhn freeproc() er kaj hbe, tokhn ekhane tickets, timeslices eshb er record 0 kore dite hbe
+
+
+[lock can be acquire in one core and release in another core] 
+
+
+scheduler() er vitor switch theke return 2 somoy korte pare: I/O(like console a print)
+korar somoy SLEEP state a chole jeye ekhane return krte pare, othoba timeslice sesh
+howar por RUNNABLE state a jeye ekhane return korte pare. 2 case ei ticket khoroch hoise
+dhore nibo? :3
+
+
+get the virtual address of user pstat with argaddr(), 
+create a local pstat. edit the local pstat.
+Deepcopy the local pstat to the user pstat using copyout()
+
+
+
+testticket 10 &; testticket 20 &; testprocinfo &;
+
+testticket 3 &; testprocinfo &;
