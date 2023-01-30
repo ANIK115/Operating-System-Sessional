@@ -9,7 +9,6 @@
 
 int item_to_produce, curr_buf_size, item_to_consume;
 int total_items, max_buf_size, num_workers, num_masters;
-int items_remaining_to_consume, items_remaining_to_produce;
 int worker_count = 0, producer_count = 0;
 
 pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER; // mutex lock for the shared buffer
@@ -131,8 +130,6 @@ int main(int argc, char *argv[])
     num_workers = atoi(argv[3]);
     total_items = atoi(argv[1]);
     max_buf_size = atoi(argv[2]);
-    items_remaining_to_consume = total_items;
-    items_remaining_to_produce = total_items;
     }
     
 
