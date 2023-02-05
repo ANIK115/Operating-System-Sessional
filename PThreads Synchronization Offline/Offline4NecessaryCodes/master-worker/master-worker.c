@@ -57,7 +57,7 @@ void *generate_requests_loop(void *data)
         buffer[curr_buf_size++] = item_to_produce;
         print_produced(item_to_produce, thread_id);
         item_to_produce++;
-        pthread_cond_broadcast(&fill);
+        pthread_cond_signal(&fill);
         pthread_mutex_unlock(&m);
     }
     // producer_count++;
@@ -96,7 +96,7 @@ void *worker_working_loop(void *data)
         int consumed = buffer[--curr_buf_size];
         print_consumed(consumed, thread_id);
         item_to_consume++;
-        pthread_cond_broadcast(&empty);
+        pthread_cond_signal(&empty);
         pthread_mutex_unlock(&m);
     }
     // worker_count++;
